@@ -40,13 +40,15 @@ The requirements below are based off running clean builds using ninja, with the 
 runbuild.sh –c –n
 ```
 
-The builds were run on [Azure Linux VMs](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general). They should be taken as estimates of how long a build will take.
+The builds were run on [Azure Linux VMs](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general) with added disk capacity. If you want to to build on an Azure machine you need to add approximately 70GB for the source+build outputs. 
+
+These times should be taken as estimates of how long a build will take.
 
 |Machine SKU|Cores|Memory|Build Time|
 |-----------|-----|-----------|----------|
-|Standard_D8s_v3|8|32GB|~2 hours|
+|Standard_D8s_v3|8|32GB|~4 hours|
 |Standard_D16s_v3|16|64GB|~2 hours|
-|Standard_D32s_v3|32|128GB|~2 hours|
+|Standard_D32s_v3|32|128GB|~1 hour|
 
 On a smaller VM (Standard_D4s_V3 / 4 cores / 16GB) the build may fail. You may be able to build on a machine with less RAM if you limit the parallelism using the `-j` switch.
 
@@ -120,12 +122,18 @@ Take note to replace the above command with your actual local DNS server, and re
 ```sh
 service docker restart
 ```
+## Testing a local cluster
+
+For more details please refer to [Testing using ClusterDeployer](docs/cluster_deployer_test.md).
+
+## Running a local cluster
+For more details please refer [Deploying local cluster from build](docs/install_packages_and_deploy_cluster.md)
 
 ## Documentation 
 Service Fabric conceptual and reference documentation is available at [docs.microsoft.com/azure/service-fabric](https://docs.microsoft.com/azure/service-fabric/). Documentation is also open to your contribution on GitHub at [github.com/Microsoft/azure-docs](https://github.com/Microsoft/azure-docs).
 ## Samples 
 For Service Fabric sample code, check out the [Azure Code Sample gallery](https://azure.microsoft.com/resources/samples/?service=service-fabric) or go straight to [Azure-Samples on GitHub](https://github.com/Azure-Samples?q=service-fabric).
 ## License 
-All Service Fabric open source projects are licensed under the [MIT License](LICENSE.txt).
+All Service Fabric open source projects are licensed under the [MIT License](LICENSE).
 ## Code of Conduct 
 All Service Fabric open source projects adopt the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
